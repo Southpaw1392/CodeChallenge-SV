@@ -25,7 +25,7 @@ namespace CodeChallenge_SV.DataAccessLayer
             var locks = new List<Lock>();
             if (data != null && data.Locks != null)
             {
-                locks = data.Locks.Where(l => l.Name.Contains(searchInput) || l.SerialNumber.Contains(searchInput) || l.Floor != null && l.Floor.Contains(searchInput) || l.RoomNumber.Contains(searchInput) || l.Description != null && l.Description.Contains(searchInput)).ToList();
+                locks = data.Locks.Where(l => l.Name.Contains(searchInput) || l.SerialNumber.Contains(searchInput) || l.Floor != null && l.Floor.Contains(searchInput) || l.RoomNumber.Contains(searchInput) || l.Description != null && l.Description.Contains(searchInput) || l.Type.Contains(searchInput)).ToList();
             }
             return locks;
         }
@@ -47,7 +47,7 @@ namespace CodeChallenge_SV.DataAccessLayer
             var media = new List<Medium>();
             if (data != null && data.Media != null)
             {
-                media = data.Media.Where(m => m.Owner.Contains(searchInput) || m.SerialNumber.Contains(searchInput) || m.Description != null && m.Description.Contains(searchInput)).ToList();
+                media = data.Media.Where(m => m.Owner.Contains(searchInput) || m.SerialNumber.Contains(searchInput) || m.Description != null && m.Description.Contains(searchInput) || m.Type.Contains(searchInput)).ToList();
             }
             return media;
         }
