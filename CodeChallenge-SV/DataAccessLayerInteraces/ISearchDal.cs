@@ -4,9 +4,9 @@ namespace CodeChallenge_SV.DataAccessLayerInteraces
 {
     public interface ISearchDal
     {
-        Task<List<Building>> GetBuildingsBySearchInput(string searchInput);
-        Task<List<Lock>> GetLocksBySearchInput(string searchInput);
-        Task<List<Group>> GetGroupsBySearchInput(string searchInput);
-        Task<List<Medium>> GetMediaBySearchInput(string searchInput);
+        Task<List<Building>> GetBuildingsBySearchInput(string[] searchWords);
+        Task<List<Lock>> GetLocksBySearchInput(string[] searchWords);
+        Task<List<Group>> GetGroupsBySearchInput(string[] searchWords);
+        Task<List<Medium>> GetMediaBySearchInput(string[] searchWords);
     }
 }
