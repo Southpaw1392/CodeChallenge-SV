@@ -1,2 +1,79 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
+
+<PageTitle>Fetch Data</PageTitle>
+
+<h1>Fetch Data</h1>
+
+<div class="input-group">
+    <input class="form-control" @bind="@_searchText" />
+    <button class="btn btn-primary" @onclick="Search"><span class="oi oi-magnifying-glass"></span></button>
+</div>
+
+@if (_searchResults == null)
+{
+    <p><em>No results</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Entity Type</th>
+                <th>Weight</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>ShortCut</th>
+                <th>Type</th>
+                <th>SerialNumber</th>
+                <th>Floor</th>
+                <th>RoomNumber</th>
+                <th>Owner</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in _searchResults)
+            {
+                <tr>
+                    <td>@result.EntityType</td>
+                    <td>@result.Weight</td>
+                    <td>@result.Name</td>
+                    <td>@result.Description</td>
+                    <td>@result.ShortCut</td>
+                    <td>@result.Type</td>
+                    <td>@result.SerialNumber</td>
+                    <td>@result.Floor</td>
+                    <td>@result.RoomNumber</td>
+                    <td>@result.Owner</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<SearchResult> _searchResults = new List<SearchResult>();
+    private string _searchText = string.Empty;
+
+    private async Task Search()
+    {
+        if (_searchText.Length > 1)
+        {
+            _searchResults = await Http.GetFromJsonAsync<List<SearchResult>>($"search/{_searchText}");
+        }
+    }
+
+    public class SearchResult
+    {
+        public int Weight { get; set; }
+        public string EntityType { get; set; }
+        public string Name { get; set; }
+        public string? Description { get; set; }
+        public string ShortCut { get; set; }
+        public string Type { get; set; }
+        public string SerialNumber { get; set; }
+        public string? Floor { get; set; }
+        public string RoomNumber { get; set; }
+        public string Owner { get; set; }
+    }
+}
