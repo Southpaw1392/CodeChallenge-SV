@@ -3,7 +3,7 @@ using CodeChallenge_SV.DataAccessLayer;
 using CodeChallenge_SV.DataAccessLayerInteraces;
 
 var builder = WebApplication.CreateBuilder(args);
-
+const string allowedOriginSetting = "AllowedOrigin";
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,6 +20,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors(corsBuilder => {
+        corsBuilder.WithOrigins(builder.Configuration[allowedOriginSetting])
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 }
 
 app.UseHttpsRedirection();

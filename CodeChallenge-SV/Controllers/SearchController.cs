@@ -18,10 +18,9 @@ namespace CodeChallenge_SV.Controllers
             _searchBll = new SearchBll(searchDal);
         }
 
-        [HttpGet(Name = "Search")]
-        public async Task<List<SearchResult>> Search(String searchInput)
+        [HttpGet("{searchInput}")]
+        public async Task<List<SearchResult>> Search(string searchInput)
         {
-
             return await _searchBll.Search(searchInput);
         }
     }
