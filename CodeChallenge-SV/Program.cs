@@ -29,6 +29,7 @@ if (app.Environment.IsDevelopment())
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
+    app.Seed();
 }
 
 app.UseHttpsRedirection();

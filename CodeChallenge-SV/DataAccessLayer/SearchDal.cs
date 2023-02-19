@@ -2,12 +2,20 @@
 using CodeChallenge_SV.Data;
 using CodeChallenge_SV.DataAccessLayerInteraces;
 using CodeChallenge_SV.Models;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace CodeChallenge_SV.DataAccessLayer
 {
     public class SearchDal : ISearchDal
     {
+        private readonly SearchContext _context;
+
+        public SearchDal(SearchContext context)
+        {
+            _context = context;
+        }
+
         public async Task<List<Building>> GetBuildingsBySearchInput(string[] searchWords)
         {
             var data = JsonConvert.DeserializeObject<SearchDataHolder>(File.ReadAllText(FilePath.Path));
