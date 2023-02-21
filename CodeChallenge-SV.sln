@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChallenge-SV", "CodeChallenge-SV\CodeChallenge-SV.csproj", "{67817765-6010-40DA-85BE-3C8F1DAB165A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallenge-Frontend", "CodeChallenge-Frontend\CodeChallenge-Frontend.csproj", "{23299CD2-92B8-4E73-BBD0-55EDFDF4974A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChallenge-Frontend", "CodeChallenge-Frontend\CodeChallenge-Frontend.csproj", "{23299CD2-92B8-4E73-BBD0-55EDFDF4974A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallengeTest", "CodeChallengeTest\CodeChallengeTest.csproj", "{367C0991-7C8E-467E-8DAE-777A80D3BE7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{23299CD2-92B8-4E73-BBD0-55EDFDF4974A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23299CD2-92B8-4E73-BBD0-55EDFDF4974A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23299CD2-92B8-4E73-BBD0-55EDFDF4974A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367C0991-7C8E-467E-8DAE-777A80D3BE7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367C0991-7C8E-467E-8DAE-777A80D3BE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367C0991-7C8E-467E-8DAE-777A80D3BE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367C0991-7C8E-467E-8DAE-777A80D3BE7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
