@@ -25,7 +25,7 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             return await FilterAndSortData(searchInput, searchWords, buildings, groups, locks, media);
         }
 
-        private async Task<List<SearchResult>> FilterAndSortData(string searchInput, string[] searchWords, List<Building> buildings, List<Group> groups, List<Lock> locks, List<Medium> media)
+        public async Task<List<SearchResult>> FilterAndSortData(string searchInput, string[] searchWords, List<Building> buildings, List<Group> groups, List<Lock> locks, List<Medium> media)
         {
             List<SearchResult> results = new List<SearchResult>();
             ProcessBuildings(searchInput, searchWords, buildings, ref results);
@@ -36,7 +36,7 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             return results.OrderByDescending(x => x.Weight).ThenBy(n => n.Name).ToList();
         }
 
-        private static void ProcessBuildings(string searchInput, string[] searchWords, List<Building> buildings, ref List<SearchResult> results)
+        public static void ProcessBuildings(string searchInput, string[] searchWords, List<Building> buildings, ref List<SearchResult> results)
         {
             if (buildings != null && buildings.Any())
             {
@@ -47,7 +47,7 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             }
         }
 
-        private static void CalculateBuildingWeight(string searchInput, string[] searchWords, Building building, ref List<SearchResult> results)
+        public static void CalculateBuildingWeight(string searchInput, string[] searchWords, Building building, ref List<SearchResult> results)
         {
             int weight = 0;
             if (searchWords.Any(w => building.Name.Contains(w)))
@@ -78,7 +78,7 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             }
         }
 
-        private static void ProcessLocks(string searchInput, string[] searchWords, List<Lock> locks, ref List<SearchResult> results)
+        public static void ProcessLocks(string searchInput, string[] searchWords, List<Lock> locks, ref List<SearchResult> results)
         {
             if (locks != null && locks.Any())
             {
@@ -89,7 +89,7 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             }
         }
 
-        private static void CalculateLockWeight(string searchInput, string[] searchWords, Lock lockEntity, ref List<SearchResult> results)
+        public static void CalculateLockWeight(string searchInput, string[] searchWords, Lock lockEntity, ref List<SearchResult> results)
         {
             int weight = 0;
             if (searchWords.Any(w => lockEntity.Name.Contains(w)))
@@ -148,7 +148,7 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             });
         }
 
-        private static void ProcessGroups(string searchInput, string[] searchWords, List<Group> groups, ref List<SearchResult> results)
+        public static void ProcessGroups(string searchInput, string[] searchWords, List<Group> groups, ref List<SearchResult> results)
         {
             if (groups != null && groups.Any())
             {
@@ -159,7 +159,7 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             }
         }
 
-        private static void CalculateGroupWeight(string searchInput, string[] searchWords, Group group, ref List<SearchResult> results)
+        public static void CalculateGroupWeight(string searchInput, string[] searchWords, Group group, ref List<SearchResult> results)
         {
             int weight = 0;
             if (searchWords.Any(w => group.Name.Contains(w)))
@@ -184,18 +184,18 @@ namespace CodeChallenge_SV.BusinessLogicLayer
             }
         }
 
-        private static void ProcessMedia(string searchInput, string[] searchWords, List<Medium> media, ref List<SearchResult> results)
+        public static void ProcessMedia(string searchInput, string[] searchWords, List<Medium> media, ref List<SearchResult> results)
         {
             if (media != null && media.Any())
             {
                 foreach (var medium in media)
                 {
-                    CalculateMediumWeight(searchInput, searchWords, results, medium);
+                    CalculateMediumWeight(searchInput, searchWords, medium, ref results);
                 }
             }
         }
 
-        private static void CalculateMediumWeight(string searchInput, string[] searchWords, List<SearchResult> results, Medium medium)
+        public static void CalculateMediumWeight(string searchInput, string[] searchWords, Medium medium, ref List<SearchResult> results)
         {
             int weight = 0;
             if (searchWords.Any(w => medium.Owner.Contains(w)))
