@@ -135,17 +135,20 @@ namespace CodeChallenge_SV.BusinessLogicLayer
                 }
             }
 
-            results.Add(new SearchResult
+            if (weight > 0)
             {
-                Weight = weight,
-                EntityType = "Lock",
-                Name = lockEntity.Name,
-                Type = lockEntity.Type,
-                SerialNumber = lockEntity.SerialNumber,
-                Floor = lockEntity.Floor,
-                RoomNumber = lockEntity.RoomNumber,
-                Description = lockEntity.Description
-            });
+                results.Add(new SearchResult
+                {
+                    Weight = weight,
+                    EntityType = "Lock",
+                    Name = lockEntity.Name,
+                    Type = lockEntity.Type,
+                    SerialNumber = lockEntity.SerialNumber,
+                    Floor = lockEntity.Floor,
+                    RoomNumber = lockEntity.RoomNumber,
+                    Description = lockEntity.Description
+                });
+            }
         }
 
         public static void ProcessGroups(string searchInput, string[] searchWords, List<Group> groups, ref List<SearchResult> results)
@@ -226,15 +229,18 @@ namespace CodeChallenge_SV.BusinessLogicLayer
                 }
             }
 
-            results.Add(new SearchResult
+            if (weight > 0)
             {
-                Weight = weight,
-                EntityType = "Medium",
-                Owner = medium.Owner,
-                Type = medium.Type,
-                SerialNumber = medium.SerialNumber,
-                Description = medium.Description
-            });
+                results.Add(new SearchResult
+                {
+                    Weight = weight,
+                    EntityType = "Medium",
+                    Owner = medium.Owner,
+                    Type = medium.Type,
+                    SerialNumber = medium.SerialNumber,
+                    Description = medium.Description
+                });
+            }
         }
     }
 }
