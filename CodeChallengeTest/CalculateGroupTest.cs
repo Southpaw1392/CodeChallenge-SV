@@ -1,6 +1,7 @@
 ﻿using CodeChallenge_SV.BusinessLogicLayer;
 using CodeChallenge_SV.Dtos;
 using CodeChallenge_SV.Models;
+using FluentAssertions;
 
 namespace CodeChallengeTest
 {
@@ -24,7 +25,7 @@ namespace CodeChallengeTest
             SearchBll.CalculateGroupWeight(searchInput, searchWords, group, ref results);
 
             // Assert
-            Assert.Equal(95, results[0].Weight);
+            results[0].Weight.Should().Be(95);
         }
 
         [Fact]
@@ -45,7 +46,7 @@ namespace CodeChallengeTest
             SearchBll.CalculateGroupWeight(searchInput, searchWords, group, ref results);
 
             // Assert
-            Assert.Equal("Group", results[0].EntityType);
+            results[0].EntityType.Should().Be("Group");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CodeChallenge_SV.BusinessLogicLayer;
 using CodeChallenge_SV.Dtos;
 using CodeChallenge_SV.Models;
+using FluentAssertions;
 
 namespace CodeChallengeTest
 {
@@ -27,7 +28,7 @@ namespace CodeChallengeTest
             SearchBll.CalculateLockWeight(searchInput, searchWords, lockEntity, ref results);
 
             // Assert
-            Assert.Equal(66, results[0].Weight);
+            results[0].Weight.Should().Be(66);
         }
 
         [Fact]
@@ -85,7 +86,7 @@ namespace CodeChallengeTest
             SearchBll.CalculateLockWeight(searchInput, searchWords, lockEntity, ref results);
 
             // Assert
-            Assert.Equal("Lock", results[0].EntityType);
+            results[0].EntityType.Should().Be("Lock");
         }
     }
 }

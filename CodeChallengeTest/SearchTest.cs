@@ -1,30 +1,14 @@
 ﻿using CodeChallenge_SV.BusinessLogicLayer;
-using CodeChallenge_SV.Controllers;
-using CodeChallenge_SV.DataAccessLayer;
 using CodeChallenge_SV.DataAccessLayerInteraces;
 using CodeChallenge_SV.Dtos;
 using CodeChallenge_SV.Models;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace CodeChallengeTest
 {
-    public class SearchTest /*: IClassFixture<ISearchDal>*/
+    public class SearchTest
     {
-        //private readonly SearchBll _searchBll;
-        //public SearchTest(ISearchDal searchDal)
-        //{
-            
-        //    _searchBll = new SearchBll(searchDal);
-        //}
-
         private ISearchDal getMockSearchDAL() 
         {
             Mock<ISearchDal> mockObject = new Mock<ISearchDal>();
